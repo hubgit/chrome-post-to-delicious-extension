@@ -1,0 +1,18 @@
+<html>
+<script>
+chrome.browserAction.onClicked.addListener(function(tab) {
+  	chrome.tabs.sendRequest(tab.id, "getSelection", function(notes){
+	     	var notesMaxLength = 1000;
+
+		if (notes)
+			notes = '"' + notes.substring(0, notesMaxLength - 1) + '"';
+
+		window.open(
+			"http://delicious.com/save?v=5&noui&jump=close&url=" + encodeURIComponent(tab.url) + "&title=" + encodeURIComponent(tab.title) + "&notes=" + encodeURIComponent(notes),
+			"deliciousuiv5",
+			"location=no,links=no,scrollbars=no,toolbar=no,width=520,height=550"
+		);
+  	});
+});
+</script>
+</html>
