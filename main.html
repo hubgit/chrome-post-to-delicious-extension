@@ -7,12 +7,18 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		if (notes)
 			notes = '"' + notes.substring(0, notesMaxLength - 1) + '"';
 
-		window.open(
-			"http://delicious.com/save?v=5&noui&jump=close&url=" + encodeURIComponent(tab.url) + "&title=" + encodeURIComponent(tab.title) + "&notes=" + encodeURIComponent(notes),
-			"deliciousuiv5",
-			"location=no,links=no,scrollbars=no,toolbar=no,width=520,height=550"
-		);
+		chrome.windows.create({
+			url: "http://delicious.com/save?v=5&noui&jump=close&url=" + encodeURIComponent(tab.url) + "&title=" + encodeURIComponent(tab.title) + "&notes=" + encodeURIComponent(notes),
+			type: "popup", width: 520, height: 520
+		});
   	});
 });
+
+chrome.contextMenus.create({"title": "Tasty?", "contexts":["page"], "onclick": function(info, tab){
+	chrome.windows.create({
+		url: "http://delicious.com/url?url=" + encodeURIComponent(tab.url),
+		type: "popup", width: 1000, height: 600
+	});
+}});
 </script>
 </html>
