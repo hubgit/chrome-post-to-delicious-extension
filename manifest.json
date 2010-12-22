@@ -6,11 +6,11 @@
 	"name": "Post To Delicious",
 	"version": "1.0",
 	"description": "Quick saving of a bookmark to Delicious. Selected text populates your notes field.",
-	"icons" : {"16": "delicious16.png", "48": "delicious48.png", "128": "delicious128.png"},
+	"icons" : {"16": "images/16.png", "48": "images/48.png", "128": "images/128.png"},
 	"permissions": ["tabs", "contextMenus", "http://*/", "https://*/"],
 	"browser_action": {
 		"default_title": "Post To Delicious",
-		"default_icon": "delicious.png"
+		"default_icon": "images/button.png"
 	},
 	"background_page": "main.html"
 }
